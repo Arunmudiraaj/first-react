@@ -1,5 +1,6 @@
 import MyItem from "./components/Expenses/ExpenseItem";
-
+// import ExpenseDate from './components/Expenses/ExpenseForm'
+import ExpenseForm from "./components/Expenses/ExpenseForm";
 const App = () => {
   const expenses = [
     {
@@ -30,6 +31,7 @@ const App = () => {
   return (
     <div>
       <h2>Let's get started!</h2>
+      <ExpenseForm/>
       <MyItem
         title={expenses[0].title}
         amount={expenses[0].amount}
