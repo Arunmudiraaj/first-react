@@ -1,8 +1,10 @@
 import MyItem from "./components/Expenses/ExpenseItem";
 import AllExpenses from "./components/Expenses/AllExpenses";
 import NewExpense from "./components/newExpense/newExpense";
+import { useState } from "react";
+//import newExpense from "./components/newExpense/newExpense";
 const App = () => {
-  const expenses = [
+  const [expenses, updateExpenses] = useState([
     {
       id: "e1",
       title: "Toilet Paper",
@@ -27,10 +29,19 @@ const App = () => {
       amount: 450,
       date: new Date(2021, 5, 12)
     }
-  ];
+  ]);
+
+  const newExpenseHandler = data =>{
+    expenses.push(data)
+    updateExpenses(expenses)
+    console.log(expenses)
+  }
+  
   return (
+    
     <AllExpenses>
-      <NewExpense/>
+      
+      <NewExpense onNewExpense = {newExpenseHandler}/>
       <MyItem
         title={expenses[0].title}
         amount={expenses[0].amount}
