@@ -1,7 +1,8 @@
-import MyItem from "./components/Expenses/ExpenseItem";
+
 import AllExpenses from "./components/Expenses/AllExpenses";
-import NewExpense from "./components/newExpense/newExpense";
+import NewExpense from "./components/newExpense/NewExpense";
 import ExpenseFilter from "./components/Expenses/ExpenseFilter";
+import ExpenseChart from "./components/Expenses/ExpenseChart";
 import { useState } from "react";
 //import newExpense from "./components/newExpense/newExpense";
 const dummyData = [
@@ -45,10 +46,14 @@ const App = () => {
   const yearSelectHandler = data =>{ 
     setSelectedYear(data)
   }
+  var filteredArr = expenses.filter(
+    (e) => e.date.getFullYear().toString() === selectedYear
+  );
   
   return (<div>
       <NewExpense onNewExpense = {newExpenseHandler}/>
       <ExpenseFilter selected={selectedYear} onYearSelect ={yearSelectHandler}/>
+      <ExpenseChart expenses ={filteredArr}/>
       <AllExpenses items = {expenses} date = {selectedYear}/>
       </div>
       
